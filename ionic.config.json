@@ -1,0 +1,7 @@
+{
+  "name": "Sigestion-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,36 @@
+<ion-split-pane when="sm" contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay" class="custom">
+      <ion-content>
+        <ion-list id="inbox-list">
+        <ion-img class="img1" src="assets/img/dxc_logo_new.png"></ion-img>
+        <div style="background-color: #82599f;padding: 6px;">
+        <ion-list-header>firstName</ion-list-header>
+           <ion-note>{{tenant}}</ion-note>
+          </div>
+              <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+              <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <mat-icon class="icon-menu" slot="start">{{p.icon}}</mat-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <div class="ion-page" id="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-toggle>
+              <ion-button>
+                <ion-icon slot="icon-only" name="menu"></ion-icon>
+              </ion-button>
+            </ion-menu-toggle>
+          </ion-buttons>
+          <ion-title>Accueil</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+     <ion-router-outlet></ion-router-outlet>
+      </ion-content>
+    </div>
+  </ion-split-pane>

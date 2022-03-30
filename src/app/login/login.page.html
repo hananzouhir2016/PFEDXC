@@ -1,0 +1,76 @@
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row class="row-style">
+      <ion-col align-self-center size-md="2" size-lg="3" size-xs="1"></ion-col>
+      <ion-col style="text-align:left" align-self-center size-md="8" size-lg="6" size-xs="12">
+        <div id="container">
+          <div class="main-login-form" *ngIf="isChooseMarket">
+            <div>
+              <div class="img">
+                 <ion-img class="img1" src="assets/img/dxc_logo_new.png" alt=""></ion-img>
+              </div>
+            </div>
+            <ion-text class="ion-text">SI-GESTION</ion-text>
+            <div>
+              <button class="main-login-submit buttom" style="font-weight: bold;" mat-flat-button color="primary" (click)=onCardClickLocal()>
+                <ion-icon class="card-icon" name="home"></ion-icon> Local
+              </button>
+            </div>
+            <div>
+              <button class="main-login-submit buttom" style="font-weight: bold;" mat-flat-button color="primary" (click)=onCardClickOffshore()>
+              <ion-icon  class="card-icon" name="earth-outline"></ion-icon>OFFSHOR
+              </button>
+            </div>
+          </div>
+          <div class="main-login-form" [formGroup]="loginForm" *ngIf="isLogin" (keyup.enter)="submit()">
+            <ion-img class="img2" src="assets/img/dxc_logo_new.png" alt="" ></ion-img>
+            <div class="ion-text">
+            <ion-text class="ion-text">Welcom To si-gestion</ion-text>
+            </div>
+            <div>
+              <ion-label class="ion-label" style="margin-right: 68%;">Matricule</ion-label>
+              <ion-input class="custom-input" formControlName="username" placeholder="Matricule" type="text" required>
+              </ion-input>
+              <ion-item-divider class="divider"></ion-item-divider>
+              <ion-label class="ion-label">Mot de passe</ion-label>
+              <div class="input-container">
+              <ion-input class="custom-input" [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="******************************" required>
+              </ion-input>
+              <div class="div-icon">
+              <ion-icon  [src]="passwordToggleIcon" (click)="togglePassword()"></ion-icon>
+              </div>
+              </div>
+              <ion-item-divider class="divider"></ion-item-divider>
+              <button class="main-login-submit buttom"  style="font-weight: bold;" mat-flat-button color="primary" type="submit" (click)="submit()" [disabled]="!loginForm.valid">Se Connecter</button>
+              <div>
+                <button class="main-login-forgot-password buttom" style="font-weight: bold;" mat-flat-button (click)="setForgotPassword()">Mot de passe oublié?</button>
+              </div>
+              <button [routerLink]="['/login']" style="font-weight: bold;" class="main-login-forgot-password buttom" mat-flat-button (click)="setChooseMarket()">
+              <ion-icon name="arrow-back-outline" style="font-weight: bold;"></ion-icon>Retour
+              </button>
+            </div>
+          </div>
+          <div class="main-login-form" [formGroup]="resetPasswordRequestForm" *ngIf="isForgotPassword">
+              <ion-img class="img2" src="assets/img/dxc_logo_new.png" alt=""></ion-img>
+              <div style="margin-top:10%">
+              <ion-label class="ion-label">Votre email</ion-label>
+              </div>
+              <ion-input class="custom-input" type="text" formControlName="email" autocomplete="off">
+              </ion-input>
+              <ion-item-divider class="divider">
+              </ion-item-divider>
+              <div>
+            <button class="main-resetPassword-submit buttom" mat-flat-button color="primary"
+              [disabled]="!resetPasswordRequestForm.valid" style="font-weight: bold;">R�initialisez le mot de passe</button>
+            </div>
+            <button class="main-return-tologin buttom" mat-button (click)="setLogin()"  style="margin-top:6%">
+              <ion-icon name="arrow-back-outline" style="font-weight: bold;"></ion-icon>Retour
+            </button>
+</div>
+</div>
+      </ion-col>
+       <ion-col align-self-center size-md="2" size-lg="3" size-xs="1"></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
