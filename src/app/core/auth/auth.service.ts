@@ -7,7 +7,6 @@ import {JwtServiceService} from './jwt-service.service';
 import {WrapperResponse} from '../model';
 import {environment} from 'src/environments/environment';
 import {tap} from 'rxjs/operators';
-import { CurrentUser } from '../shared/models';
 @Injectable({
   providedIn: 'root'
 })
@@ -31,8 +30,5 @@ export class AuthService {
   }
   private authenticateUser(username: string, password: string, code?: string): Observable<WrapperResponse> {
     return this.http.post<WrapperResponse>(`${this.apiUrl}api/authenticate`, {username, password, code});
-  }
-   getCurrentUserInfo(): Observable<CurrentUser> {
-    return this.http.get<CurrentUser>(`${this.apiUrl}api/account`);
   }
 }

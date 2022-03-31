@@ -1,7 +1,5 @@
 {
   "name": "Sigestion-mobile",
-  "integrations": {
-    "capacitor": {}
-  },
+  "integrations": {},
   "type": "angular"
 }

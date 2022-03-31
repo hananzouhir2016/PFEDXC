@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
 const routes: Routes = [
-
   {
     path: '',
     redirectTo: 'login',
@@ -14,19 +12,23 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    redirectTo: 'main-dashboard',
+    pathMatch: 'full'
   },
-{
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  {
+    path: 'leads-management',
+    loadChildren: () => import('./leads-management/leads-management.module').then( m => m.LeadsManagementPageModule)
+  },
+  {
+    path: 'main-dashboard',
+    loadChildren: () => import('./main-dashboard/main-dashboard.module').then( m => m.MainDashboardPageModule)
   }
 
 ];
-
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
